@@ -1,6 +1,14 @@
+from tech_news.database import search_news
+
+
 # Requisito 6
 def search_by_title(title):
     """Seu código deve vir aqui"""
+    # https://www.mongodb.com/community/forums/t/case-insensitive-search-with-regex/120598
+    return [
+        (news["title"], news["url"])
+        for news in search_news({"title": {"$regex": title, "$options": "i"}})
+    ]
 
 
 # Requisito 7
