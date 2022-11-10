@@ -31,6 +31,13 @@ def search_by_date(date):
 # Requisito 8
 def search_by_tag(tag):
     """Seu código deve vir aqui"""
+    # https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/d2b16462-a889-47fc-aa04-92517825b186/day/c436d6e0-7e4f-4d32-8e47-15c4f17e5e0f/lesson/12759a16-4246-4764-aeee-564ad0f187ec
+    return [
+        (news["title"], news["url"])
+        for news in search_news(
+            {"tags": {"$elemMatch": {"$regex": tag, "$options": "i"}}}
+        )
+    ]
 
 
 # Requisito 9
